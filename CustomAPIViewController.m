@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"Apollo API";
+    self.title = @"Custom API";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone primaryAction:[UIAction actionWithHandler:^(UIAction * action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }]];
@@ -121,10 +121,10 @@
     UIStackView *blockAnnouncementsStackView = [self createToggleSwitchWithKey:UDKeyBlockAnnouncements labelText:@"Block Announcements" action:@selector(blockAnnouncementsSwitchToggled:)];
     [stackView addArrangedSubview:blockAnnouncementsStackView];
 
-    UIStackView *unreadCommentsStackView = [self createToggleSwitchWithKey:UDKeyApolloShowUnreadComments labelText:@"[Test] New Comments Highlightifier" action:@selector(unreadCommentsSwitchToggled:)];
+    UIStackView *unreadCommentsStackView = [self createToggleSwitchWithKey:UDKeyApolloShowUnreadComments labelText:@"New Comments Highlightifier (Beta)" action:@selector(unreadCommentsSwitchToggled:)];
     [stackView addArrangedSubview:unreadCommentsStackView];
 
-    UIStackView *weatherStackView = [self createToggleSwitchWithKey:UDKeyApolloSubredditWeather labelText:@"[Test] Subreddit Weather and Time" action:@selector(weatherSwitchToggled:)];
+    UIStackView *weatherStackView = [self createToggleSwitchWithKey:UDKeyApolloSubredditWeather labelText:@"Subreddit Weather and Time (Beta)" action:@selector(weatherSwitchToggled:)];
     [stackView addArrangedSubview:weatherStackView];
 
     UITextView *textView = [[UITextView alloc] init];
