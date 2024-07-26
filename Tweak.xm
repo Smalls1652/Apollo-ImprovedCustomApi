@@ -554,6 +554,19 @@ static NSString *imageID;
         [self setValue:mutableRequest forKey:@"_currentRequest"];
     }
 
+    // Intercept requests to 'reddit.com' URLs and change the User-Agent header
+    // to the one used by Safari on iOS. Should help with Reddit blocking requests
+    // from Apollo if they are actually blocking based off the User-Agent header.
+    // Fuck that shit if they are. >:(
+    if ([requestURL containsString:@"reddit.com"]) {
+        NSMutableURLRequest *mutableRequest = [request mutableCopy];
+        // Change this to whatever you like
+        [mutableRequest setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1" forHTTPHeaderField:@"User-Agent"];
+
+        [self setValue:mutableRequest forKey:@"_originalRequest"];
+        [self setValue:mutableRequest forKey:@"_currentRequest"];
+    }
+
     %orig;
 }
 
